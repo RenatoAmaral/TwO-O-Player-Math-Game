@@ -3,9 +3,9 @@ require './questions'
 
 class Game
   def initialize
-    puts"-------------------------------"
-    puts"----------BEGIN GAME-----------"
-    puts"-------------------------------"
+    puts"-------------------------------------"
+    puts"---------    BEGIN GAME    ----------"
+    puts"-------------------------------------"
     puts "Player 1's name: "
     player1_name = gets.chomp
     puts "Player 2's name: "
@@ -29,29 +29,30 @@ class Game
     end
 
     if @player1.lives == 0
-      puts "#{@player2.name} wins!!!!"
+      puts "\n#{@player2.name} wins!!!!\n\n"
       puts"-------------------------------------"
-      puts"--------------GAME OVER--------------"
+      puts"----------    GAME OVER    ----------"
       puts"-------------------------------------"
 
     elsif @player2.lives == 0
-      puts "#{@player1.name} wins!!!!"
+      puts "\n#{@player1.name} wins!!!!\n\n"
       puts"-------------------------------------"
-      puts"--------------GAME OVER--------------"
-      puts"-------------------------------------"    end
+      puts"----------    GAME OVER    ----------"
+      puts"-------------------------------------"
+    end
   end
 
   def play_turn
-    puts "\n-------------NEW TURN---------------\n"
+    puts "\n\n-------------NEW TURN---------------\n\n"
     puts "#{@current_player.name} to play:"
     @question = Questions.new
     answer = gets.chomp.to_i
 
     if answer == @question.answer
-      puts "CORRECT!"
+      puts "\nTHAT'S CORRECT!\n"
       puts "#{@current_player.name} #{@current_player.lives}/3 lives and #{@other_player.name} #{@other_player.lives}/3 lives"
     else
-      puts "!"
+      puts "\nBUZZ!! WRONG ANSWER!\n"
       @current_player.lives = @current_player.lives - 1
       puts "#{@current_player.name} #{@current_player.lives}/3 lives and #{@other_player.name} #{@other_player.lives}/3 lives"
     end
